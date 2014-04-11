@@ -1,4 +1,4 @@
-var fs     = require('fs'),
+fs     = require('fs'),
     uinput = require('../build/Release/uinput.node');
 
 fs.open('/dev/uinput', 'a', function (err, fd) {

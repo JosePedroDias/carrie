@@ -9,6 +9,7 @@
 		var kbProfile = o.kbProfile;
 		var kbStyle   = o.kbStyle;
 		var socket    = o.socket;
+		var keyMap    = o.keyMap;
 
 		//kbProfile, kbStyle) {
 		// for now we're assuming keyboard to take over the whole viewport
@@ -133,7 +134,8 @@
 			draw(c, true);
 			downCell = c;
 			//console.log('< %s', c.c);
-			socket.emit('key', [30, 1]);
+			var symb = keyMap[c.c];
+			socket.emit('key', [symb, 1]);
 		};
 
 		var onUp = function() {
@@ -141,7 +143,8 @@
 			if (!c) { return; }
 			draw(c);
 			//console.log('> %s', c.c);
-			socket.emit('key', [30, 0]);
+			var symb = keyMap[c.c];
+			socket.emit('key', [symb, 0]);
 			downCell = undefined;
 		};
 

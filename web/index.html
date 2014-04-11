@@ -12,11 +12,12 @@
 	
 	<body>
 		<script type="text/javascript" src="carrie.js"></script>
+		<script type="text/javascript" src="keymap.js"></script>
 		<script type="text/javascript" src="keyboard-win-pt.js"></script>
 		<script src="/socket.io/socket.io.js"></script>
 		
 		<script type="text/javascript">
-			var socket = io.connect('ws://localhost:3000');
+			var socket = io.connect();//'ws://localhost:3000');
 
 			carrie({
 				kbProfile: carrieKeyboardProfile,
@@ -30,7 +31,8 @@
 					keyBackgroundColor:     '#000',
 					keyDownBackgroundColor: '#FFF'
 				},
-				socket: socket
+				socket: socket,
+				keyMap: keyMap
 			});
 		</script>
 	</body>
