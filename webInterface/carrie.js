@@ -32,12 +32,12 @@
 		var I, cells = [];
 
 		var draw = function(c, isDown) {
-			ctx.fillStyle = isDown ? kbStyle.keyDownLabelColor : kbStyle.keyLabelColor;
+			ctx.fillStyle = isDown ? kbStyle.keyDownBackgroundColor : kbStyle.keyBackgroundColor;
 			ctx.fillRect(c.x0, c.y0, c.w, c.h);
 			if (!isDown) {
 				ctx.strokeRect(c.x0, c.y0, c.w, c.h);
 			}
-			ctx.fillStyle = isDown ? kbStyle.keyDownBackgroundColor : kbStyle.keyBackgroundColor
+			ctx.fillStyle = isDown ? kbStyle.keyDownLabelColor : kbStyle.keyLabelColor;
 
 			var l0 = c.l[0];
 			var l1 = c.l[1];
@@ -148,9 +148,11 @@
 			}, 0);
 		});
 
-		prepareCells();
+		window.addEventListener('resize', function() {
+			prepareCells();
+		});
 
-		//profile
+		prepareCells();
 	};
 
 	window.carrie = carrie;
