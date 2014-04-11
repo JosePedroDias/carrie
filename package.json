@@ -1,0 +1,27 @@
+{
+  "name": "carrie",
+  "version": "0.0.0",
+  "description": "Cenas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "node-gyp rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JosePedroDias/carrie"
+  },
+  "keywords": [
+    "keyboard",
+    "mouse",
+    "remote",
+    "scenes"
+  ],
+  "author": "People",
+  "license": "MIT",
+  "gypfile": true,
+  "bugs": {
+    "url": "https://github.com/JosePedroDias/carrie/issues"
+  },
+  "homepage": "https://github.com/JosePedroDias/carrie"
+}
