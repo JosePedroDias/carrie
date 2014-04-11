@@ -37,8 +37,26 @@
 			if (!isDown) {
 				ctx.strokeRect(c.x0, c.y0, c.w, c.h);
 			}
-			ctx.fillStyle = isDown ? kbStyle.keyDownBackgroundColor : kbStyle.keyBackgroundColor;
-			ctx.fillText(c.l, c.w/2+c.x0, c.h/2+c.y0);
+			ctx.fillStyle = isDown ? kbStyle.keyDownBackgroundColor : kbStyle.keyBackgroundColor
+
+			var l0 = c.l[0];
+			var l1 = c.l[1];
+			var l2 = c.l[2];
+
+			if (l1 === undefined) {
+				ctx.fillText(c.l, c.w/2+c.x0, c.h/2+c.y0);
+			}
+			else {
+				ctx.fillText(l0, c.w/2+c.x0, c.h*3/4+c.y0);
+
+				if (l1 !== undefined) {
+					ctx.fillText(l1, c.w/2+c.x0, c.h/4+c.y0);
+				}
+				
+				if (l2 !== undefined) {
+					ctx.fillText(l2, c.w*3.5/4+c.x0, c.h/4+c.y0);
+				}
+			}
 		};
 
 		var findCell = function(x, y) {
@@ -69,7 +87,7 @@
 						x0: r(x0+p), x1: r(x0+w-P),
 						y0: r(y0+p), y1: r(y0+h-P),
 						w:  r(w-P), h:r(h-P),
-						l:  rowLabels[x],
+						l:  rowLabels[x].split('\n'),
 						c:  rowCodes[x]
 					});
 					x0 += w;
