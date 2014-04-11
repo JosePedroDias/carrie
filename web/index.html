@@ -7,17 +7,20 @@
 		
 		<title>virtual keyboard</title>
 
-		<link rel="stylesheet" href="carrie-demo.css">
+		<link rel="stylesheet" href="carrie.css">
 	</head>
 	
 	<body>
 		<script type="text/javascript" src="carrie.js"></script>
-		<script type="text/javascript" src="carrie-keyboard-win-pt.js"></script>
+		<script type="text/javascript" src="keyboard-win-pt.js"></script>
+		<script src="/socket.io/socket.io.js"></script>
 		
 		<script type="text/javascript">
-			carrie(
-				carrieKeyboardProfile,
-				{
+			var socket = io.connect('ws://localhost:3000');
+
+			carrie({
+				kbProfile: carrieKeyboardProfile,
+				kbStyle: {
 					fontFamily:             'sans-serif',
 					backgroundColor:        '#FFF',
 
@@ -26,8 +29,9 @@
 
 					keyBackgroundColor:     '#000',
 					keyDownBackgroundColor: '#FFF'
-				}
-			);
+				},
+				socket: socket
+			});
 		</script>
 	</body>
 </html>

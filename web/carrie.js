@@ -1,10 +1,16 @@
 (function() {
+	'use strict';
 
 	var sum = function(prev, v) { return prev + v; };
 
 	var r = function(v) { return Math.round(v); };
 
-	var carrie = function(kbProfile, kbStyle) {
+	var carrie = function(o) {
+		var kbProfile = o.kbProfile;
+		var kbStyle   = o.kbStyle;
+		var socket    = o.socket;
+
+		//kbProfile, kbStyle) {
 		// for now we're assuming keyboard to take over the whole viewport
 
 		// keyboard dimensions in pixels
@@ -126,14 +132,16 @@
 			if (!c) { return; }
 			draw(c, true);
 			downCell = c;
-			console.log('< %s', c.c);
+			//console.log('< %s', c.c);
+			socket.emit('key', [30, 1]);
 		};
 
 		var onUp = function() {
 			var c = downCell;
 			if (!c) { return; }
 			draw(c);
-			console.log('> %s', c.c);
+			//console.log('> %s', c.c);
+			socket.emit('key', [30, 0]);
 			downCell = undefined;
 		};
 
