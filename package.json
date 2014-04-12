@@ -1,7 +1,7 @@
 {
   "name": "carrie",
   "version": "0.0.0",
-  "description": "Cenas",
+  "description": "web virtual keyboard for your raspi",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,13 +13,25 @@
   },
   "keywords": [
     "keyboard",
-    "mouse",
     "remote",
-    "scenes"
+    "control",
+    "linux",
+    "raspi"
   ],
-  "author": "People",
+  "engines": {
+    "node": ">= 0.10.x"
+  },
+  "dependencies": {
+    "express":   ">= 4.0.0",
+    "socket.io": ">= 0.9.16"
+  },
   "license": "MIT",
   "gypfile": true,
+  "author": "José Pedro Dias <jose.pedro.dias@gmail.com>",
+  "contributors": [
+    "Luis M. Reis <luis.m.reis@gmail.com>",
+    "Igor Soarez <igorsoarez@gmail.com>"
+  ],
   "bugs": {
     "url": "https://github.com/JosePedroDias/carrie/issues"
   },

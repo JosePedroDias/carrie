@@ -15,6 +15,34 @@ Public repos for the [Carrie project](https://codebits.eu/intra/s/project/487) i
 
 
 
+# how to install
+
+1) properly install [node.js](http://nodejs.org) into your raspian raspi
+
+2) clone our repos
+
+    git clone git@github.com:JosePedroDias/carrie.git
+
+3) install our dependecies
+
+    npm install
+
+4) compile our uinput C interface via node-gyp
+
+    node-gyp TODO
+
+5) check your raspi's IP address in the wireless interface. you'll need it for step 7
+
+    ifconfig
+
+5) fire up the server (requires sudo because it inject kbd events into the kernel)
+
+    cd server
+    sudo node server.js
+
+6) visit `http://<RASPI_IP_HERE>:3000/index.html` on a touch device in the same wireless interface
+
+
 
 # details
 
