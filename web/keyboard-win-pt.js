@@ -29,10 +29,10 @@ var ls = [
 var cs = [
 	['ESC', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'], // 13
 
-	['BACKSLASH', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '\'', '<', 'BACKSPACE'], // 14
-	['TAB', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '+', '\'', 'ENTER'], // 14
-	['CAPSLOCK', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'Ç', 'º', '~', 'ENTER'], // 14
-	['LEFTSHIFT', '<', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'COMMA', 'DOT', 'MINUS', 'RIGHTSHIFT'], // 13
+	['BACKSLASH', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 'MINUS', '', 'BACKSPACE'], // 14
+	['TAB', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', 'EQUAL', 'RIGHTBRACE', 'ENTER'], // 14
+	['CAPSLOCK', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'SEMICOLON', 'LEFTBRACE', 'APOSTROPHE', 'ENTER'], // 14
+	['LEFTSHIFT', '102ND', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'COMMA', 'DOT', 'SLASH', 'RIGHTSHIFT'], // 13
 	['LEFTCTRL', 'LEFTALT', 'SPACE', 'RIGHTALT', 'RIGHTCTRL'] // 5
 ];
 

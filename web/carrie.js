@@ -135,7 +135,7 @@
 			downCell = c;
 			//console.log('< %s', c.c);
 			var symb = keyMap[c.c];
-			socket.emit('key', [symb, 1]);
+			socket.emit('key', [symb, 1, c.c, c.l]);
 		};
 
 		var onUp = function() {
@@ -144,7 +144,7 @@
 			draw(c);
 			//console.log('> %s', c.c);
 			var symb = keyMap[c.c];
-			socket.emit('key', [symb, 0]);
+			socket.emit('key', [symb, 0, c.c, c.l]);
 			downCell = undefined;
 		};
 

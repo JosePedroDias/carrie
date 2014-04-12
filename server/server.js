@@ -18,7 +18,7 @@ var log = function(msg) {
 // setup http/ws server via express/socket.io
 var app = express();
 var server = app.listen(PORT);
-var io = socketio.listen(server);
+var io = socketio.listen(server, {log:false});
 
 // serve web dir
 app.use('/', express.static(__dirname + '/../web') );
