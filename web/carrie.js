@@ -84,6 +84,7 @@
       var x, y, w, h, rowLayout, rowLabels, rowCodes;
       var x0 = 0, y0 = 0;
       var p = 2, P = p*2;
+      var label;
       h = H / Y;
 
       for (y = 0; y < Y; ++y) {
@@ -92,14 +93,17 @@
         rowCodes  = kbProfile.codes[y];
         X = rowLayout.reduce(sum, 0);
         for (x = 0; x < rowLayout.length; ++x) {
+          label = rowLabels[x]; 
           w = W * (rowLayout[x] / X);
-          cells.push({
-            x0: r(x0+p), x1: r(x0+w-P),
-            y0: r(y0+p), y1: r(y0+h-P),
-            w:  r(w-P), h:r(h-P),
-            l:  rowLabels[x].split('\n'),
-            c:  rowCodes[x]
-          });
+          if (label !== undefined) {
+            cells.push({
+              x0: r(x0+p), x1: r(x0+w-P),
+              y0: r(y0+p), y1: r(y0+h-P),
+              w:  r(w-P), h:r(h-P),
+              l:  rowLabels[x].split('\n'),
+              c:  rowCodes[x]
+            });
+          }
           x0 += w;
         }
         x0 = 0;
