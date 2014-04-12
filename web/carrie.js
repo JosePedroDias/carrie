@@ -13,35 +13,6 @@
 
     var W, H, I, cells, canvasEl, ctx;
 
-    var reinit = function() {
-      var firstCall = !canvasEl;
-
-      W = window.innerWidth;
-      H = window.innerHeight;
-
-      // if keyboard too tall, keep it 3/1 scale
-      if (W/H < 3) { H = ~~(W / 3); }
-
-      if (firstCall) {
-        canvasEl = document.createElement('canvas');  
-      }
-
-      canvasEl.setAttribute('width',  W);
-      canvasEl.setAttribute('height', H);
-      
-      if (firstCall) {
-        document.body.appendChild(canvasEl);  
-      }
-
-      ctx = canvasEl.getContext('2d');
-      ctx.fillStyle = kbStyle.backgroundColor;
-      ctx.fillRect(0, 0, W, H);
-
-      ctx.lineWidth = 1;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-    };    
-
     var draw = function(c, isDown) {
       ctx.fillStyle = isDown ? kbStyle.keyDownBackgroundColor : kbStyle.keyBackgroundColor;
       ctx.fillRect(c.x0, c.y0, c.w, c.h);
@@ -80,7 +51,34 @@
       }
     };
 
-    var prepareCells = function() {
+    var reinit = function() {
+      var firstCall = !canvasEl;
+
+      W = window.innerWidth;
+      H = window.innerHeight;
+
+      // if keyboard too tall, keep it 3/1 scale
+      if (W/H < 3) { H = ~~(W / 3); }
+
+      if (firstCall) {
+        canvasEl = document.createElement('canvas');  
+      }
+
+      canvasEl.setAttribute('width',  W);
+      canvasEl.setAttribute('height', H);
+      
+      if (firstCall) {
+        document.body.appendChild(canvasEl);  
+      }
+
+      ctx = canvasEl.getContext('2d');
+      ctx.fillStyle = kbStyle.backgroundColor;
+      ctx.fillRect(0, 0, W, H);
+
+      ctx.lineWidth = 1;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+
       cells = [];
       var X, Y = kbProfile.codes.length;
       var x, y, w, h, rowLayout, rowLabels, rowCodes;
@@ -115,49 +113,37 @@
       for (var i = 0; i < I; ++i) {
         draw(cells[i]);
       }
-
-      ctx.font = r(h/3) + 'px ' + kbStyle.fontFamily;
-      
-      I = cells.length;
-      
-      for (var i = 0; i < I; ++i) {
-        draw(cells[i]);
-      }
     };
 
 
 
-    init();
-    prepareCells();
+    reinit();
 
 
 
-
-    var downCell;
-
-    var onDown = function(ev) {
+    var parseEv = function(ev) {
       ev.preventDefault();
       ev.stopPropagation();
       if (ev.changedTouches) {
         ev = ev.changedTouches[0];
       }
-      var c = findCell(ev.clientX, ev.clientY);
+      return findCell(ev.clientX, ev.clientY);
+    };
+
+    var onDown = function(ev) {
+      var c = parseEv(ev);
       if (!c) { return; }
       draw(c, true);
-      downCell = c;
-      //console.log('< %s', c.c);
       var symb = keyMap[c.c];
       socket.emit('key', [symb, 1, c.c, c.l]);
     };
 
-    var onUp = function() {
-      var c = downCell;
+    var onUp = function(ev) {
+      var c = parseEv(ev);
       if (!c) { return; }
       draw(c);
-      //console.log('> %s', c.c);
       var symb = keyMap[c.c];
       socket.emit('key', [symb, 0, c.c, c.l]);
-      downCell = undefined;
     };
 
     window.addEventListener('mousedown',  onDown);
@@ -171,10 +157,7 @@
       }, 0);
     });
 
-    window.addEventListener('resize', function() {
-      reinit();
-      prepareCells();
-    });
+    window.addEventListener('resize', reinit);
   };
 
   window.carrie = carrie;
