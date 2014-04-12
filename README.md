@@ -23,13 +23,13 @@ Public repos for the [Carrie project](https://codebits.eu/intra/s/project/487) i
 
     git clone git@github.com:JosePedroDias/carrie.git
 
-3) install our dependecies
+3) install our dependencies
 
     npm install
 
 4) compile our uinput C interface via node-gyp
 
-    node-gyp TODO
+    node-gyp configure build
 
 5) check your raspi's IP address in the wireless interface. you'll need it for step 7
 
