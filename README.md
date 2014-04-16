@@ -28,7 +28,7 @@ Public repos for the [Carrie project](https://codebits.eu/intra/s/project/487) i
     cd carrie
     npm install
 
-4) compile our uinput C interface via node-gyp
+4) (works automatically) compile our uinput C interface via node-gyp
 
     node-gyp configure build
 
