@@ -1,40 +1,40 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
+  <head>
+    <meta charset="utf-8">
 
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-		
-		<title>virtual keyboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    
+    <title>virtual keyboard</title>
 
-		<link rel="stylesheet" href="carrie.css">
-	</head>
-	
-	<body>
-		<script type="text/javascript" src="carrie.js"></script>
-		<script type="text/javascript" src="keymap.js"></script>
-		<!--script type="text/javascript" src="keyboard-win-pt.js"></script-->
-		<script type="text/javascript" src="keyboard-win-pt-extended.js"></script>
-		<script src="/socket.io/socket.io.js"></script>
-		
-		<script type="text/javascript">
-			var socket = io.connect();
+    <link rel="stylesheet" href="carrie.css">
+  </head>
+  
+  <body>
+    <script type="text/javascript" src="carrie.js"></script>
+    <script type="text/javascript" src="keymap.js"></script>
+    <!--script type="text/javascript" src="keyboard-win-pt.js"></script-->
+    <script type="text/javascript" src="keyboard-win-pt-extended.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script type="text/javascript">
+      var socket = io.connect();
 
-			carrie({
-				kbProfile: carrieKeyboardProfile,
-				kbStyle: {
-					fontFamily:             'sans-serif',
-					backgroundColor:        '#FFF',
+      carrie({
+        kbProfile: carrieKeyboardProfile,
+        kbStyle: {
+          fontFamily:             'sans-serif',
+          backgroundColor:        '#FFF',
 
-					keyLabelColor:          '#FFF',
-					keyDownLabelColor:      '#000',
+          keyLabelColor:          '#FFF',
+          keyDownLabelColor:      '#000',
 
-					keyBackgroundColor:     '#000',
-					keyDownBackgroundColor: '#FFF'
-				},
-				socket: socket,
-				keyMap: keyMap
-			});
-		</script>
-	</body>
+          keyBackgroundColor:     '#000',
+          keyDownBackgroundColor: '#FFF'
+        },
+        socket: socket,
+        keyMap: keyMap
+      });
+    </script>
+  </body>
 </html>

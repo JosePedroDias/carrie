@@ -1,0 +1,10 @@
+body {
+  font-family: sans-serif;
+}
+
+input {
+  border: 0;
+  width: 100%;
+  background-color: #FDD;
+  font-size: 2em;
+}
